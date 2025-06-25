@@ -727,7 +727,10 @@ span {
     min-height: auto;
     padding: 3rem 2rem 1rem; /* optional: adjust padding for mobile */
   }
-  .projects p{
+  p {
+    font-size: 1.4rem;
+  }
+  .project-box p{
     text-align: center;
   }
   
