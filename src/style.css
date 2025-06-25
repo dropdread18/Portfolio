@@ -412,7 +412,6 @@ span {
 }
 
 .testimonial .heading {
-  margin-bottom: 5rem;
   text-align: center;
 }
 
@@ -732,7 +731,7 @@ span {
     text-align: center;
     font-size: 1.5rem;
   }
-    .service-box p{
+  .service-box p{
     font-size: 1.5rem;
   }
   .testimonial-item p {
@@ -744,5 +743,14 @@ span {
 .about-content p{
   font-size: 2rem;
 }
+.services-container {
+  padding: 0 1rem;
+  gap: 2rem;
 }
 
+.services-container .services-box {
+  padding: 4rem 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+}
