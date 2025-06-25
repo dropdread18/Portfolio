@@ -644,7 +644,7 @@ span {
 
 @media (max-width: 617px) {
   html{
-    font-size: 50%;
+    font-size: 80%;
     
   }
 }
@@ -726,9 +726,6 @@ span {
   .contact {
     min-height: auto;
     padding: 3rem 2rem 1rem; /* optional: adjust padding for mobile */
-  }
-  p {
-    font-size: 1.4rem;
   }
   .project-box p{
     text-align: center;
