@@ -731,23 +731,5 @@ span {
     text-align: center;
     font-size: 1.5rem;
   }
-  .service-box p {
-    font-size: 1.5rem;
-  }
-.contact form .input-box input {
-  font-size: 1.5rem;
-}
-.about-content p{
-  font-size: 1.5rem;
-}
-.services-container {
-  padding: 0 1rem;
-  gap: 2rem;
-}
 
-.services-container .services-box {
-  padding: 4rem 2rem;
-  width: 100%;
-  max-width: 100%;
-}
 }
