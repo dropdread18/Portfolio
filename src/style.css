@@ -411,8 +411,9 @@ span {
   flex-direction: column;
 }
 
-.testimonial-heading {
+.testimonial .heading {
   margin-bottom: 5rem;
+  text-align: center;
 }
 
 .testimonial-box img{
