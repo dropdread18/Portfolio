@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const navList = document.getElementById('nav-list');
 
@@ -16,20 +15,10 @@ hamburgerMenu.addEventListener('click', () => {
 });
 
 const readMoreBtn = document.getElementById('read-more-btn');
-  const aboutText = document.getElementById('about-text');
+const aboutText = document.getElementById('about-text');
 
-  readMoreBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    aboutText.classList.toggle('expanded');
-    readMoreBtn.textContent = aboutText.classList.contains('expanded') ? 'Read Less' : 'Read More';
-  });
-  
-window.onscroll = () => {
-    menu.classList.remove('bx-x');
-    navbar.classList.toggle('active');
-}
-
-
-
-
-
+readMoreBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  aboutText.classList.toggle('expanded');
+  readMoreBtn.textContent = aboutText.classList.contains('expanded') ? 'Read Less' : 'Read More';
+});
