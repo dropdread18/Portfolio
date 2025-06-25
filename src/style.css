@@ -731,17 +731,14 @@ span {
     text-align: center;
     font-size: 1.5rem;
   }
-  .service-box p{
+  .service-box p {
     font-size: 1.5rem;
   }
-  .testimonial-item p {
-    font-size: 2rem;
-}
 .contact form .input-box input {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .about-content p{
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .services-container {
   padding: 0 1rem;
