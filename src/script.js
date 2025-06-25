@@ -1,15 +1,12 @@
-import Typed from 'typed.js';
-
-// Run this when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new Typed('.multiple-text', {
-    strings: ['Web Developer','WordPress Developer', 'Virtual Assistant'],
-    typeSpeed: 80,
-    backSpeed: 80,
-    backDelay: 1200,
+    strings: ['WordPress Developer', 'Virtual Assistant', 'Web Developer'],
+    typeSpeed: 50,
+    backSpeed: 50,
     loop: true,
   });
 });
+
 
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const navList = document.getElementById('nav-list');
