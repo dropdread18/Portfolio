@@ -400,7 +400,7 @@ span {
 /* Testimonials Section Code */
 .testimonial {
   background: #242424;
-  padding: 5rem 0;
+  padding: 7rem 9% 5rem;
 }
 
 .testimonial-box {
@@ -563,7 +563,7 @@ span {
     padding: 1rem 3%;
    }
    .services {
-    padding: 7rem;
+    padding: 7rem 9% 5rem;
    }
    .testimonial .wrapper {
     grid-template-columns: repeat(1,1fr);
@@ -591,6 +591,7 @@ span {
  }
  .home {
   flex-direction: column;
+  padding: 7rem 9% 5rem;
  }
  .home-content h3 {
   font-size: 2.6rem;
@@ -609,6 +610,7 @@ span {
  }
  .about {
   flex-direction: column-reverse;
+  padding: 7rem 9% 5rem;
  }
  .about-img img {
     width: 70vw;
@@ -634,7 +636,8 @@ span {
 @media (max-width: 617px) {
   .home-img img{
     width: 70vw;
-    margin-top: 4rem;
+    margin-top: 10rem;
+    margin-left: 4rem
   }
   .about-img img{
     width: 70vw;
@@ -725,11 +728,25 @@ span {
   }
   .contact {
     min-height: auto;
-    padding: 3rem 2rem 1rem; /* optional: adjust padding for mobile */
+    padding: 7rem 9% 5rem; /* optional: adjust padding for mobile */
   }
   .project-box p{
     text-align: center;
     font-size: 1.5rem;
   }
-
+  .project-box h3 {
+    font-size: 2.5rem;
+  }
+  .testimonial-item p {
+    font-size: 1.5rem;
+  }
+  .services-box p {
+    font-size: 1.5rem;
+  }
+  .services-box h3 {
+    font-size: 2.5rem;
+  }
+  .contact form .input-box input {
+    font-size: 1.5rem;
+  }
 }
