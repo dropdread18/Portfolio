@@ -778,7 +778,9 @@ span {
   .prev-btn {
   left: -20px;
 }
-
+  .projects{
+    min-height: auto;
+  }
 .next-btn {
   right: -20px;
 }
