@@ -751,6 +751,9 @@ span {
   .project-box h3 {
     font-size: 2.5rem;
   }
+  .testimonial-item {
+    min-height: auto;
+  }
   .testimonial-item p {
     font-size: 1.5rem;
   }
