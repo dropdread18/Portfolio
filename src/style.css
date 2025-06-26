@@ -337,61 +337,79 @@ span {
 
 /* Recent Projects Section */
 .projects {
-  background: #2e2e2e;
+  background: #242424;
   padding: 7rem 9% 5rem;
-  text-align: center;
+}
+.carousel-wrapper {
+  position: relative;
+  max-width: 1400px; /* increased from 900px */
+  margin: 0 auto;
 }
 
 .projects .heading {
   text-align: center;
-  font-size: 4rem;
-  margin-bottom: 5rem;
-  color: #fff;
+  margin-bottom: 3rem;  
 }
-
-.projects-container {
+.projects-carousel {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-bottom: 100px;
+  gap: 2.5rem; /* slightly bigger gap */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .project-box {
-  flex: 1 1 30rem;
-  background: #242424;
-  padding: 6rem 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  transition: 0.3s ease;
-}
-
-.project-box:hover {
-  border-color: #7a1dbf;
-  transform: scale(1.02);
+  flex: 0 0 calc((100% / 3) - (2.5rem * 2 / 3)); /* adjust for bigger gap */
+  background: #2e2e2e;
+  padding: 3rem; /* increased padding */
+  border-radius: 1rem;
+  box-sizing: border-box;
 }
 
 .project-box img {
   width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
+  border-radius: 0.75rem; /* slightly bigger radius */
+  margin-bottom: 1.5rem; /* more spacing */
 }
 
 .project-box h3 {
-  font-size: 2rem;
   color: #A259FF;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem; /* more space below title */
+  font-size: 2rem; /* bigger font */
 }
 
 .project-box p {
-  font-size: 1rem;
-  color: #fff;
-  margin: 1.5rem 0;
+  font-size: 1rem; /* larger text */
+  margin-bottom: 1.5rem;
   text-align: justify;
-  
+}
+
+.button-main {
+  display: inline-block;
+  padding: 0.7rem 1.5rem; /* bigger button */
+  background: #A259FF;
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  color: #A259FF;
+  font-size: 2rem; /* bigger arrows */
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: -40px;
+}
+
+.next-btn {
+  right: -40px;
 }
 
 
@@ -730,10 +748,6 @@ span {
     min-height: auto;
     padding: 7rem 9% 5rem; /* optional: adjust padding for mobile */
   }
-  .project-box p{
-    text-align: center;
-    font-size: 1.5rem;
-  }
   .project-box h3 {
     font-size: 2.5rem;
   }
@@ -749,4 +763,26 @@ span {
   .contact form .input-box input {
     font-size: 1.5rem;
   }
+}
+@media (max-width: 768px) {
+  .projects-carousel {
+    overflow-x: auto !important;  /* enable horizontal scroll */
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  }
+  .project-box {
+    flex: 0 0 100% !important;  /* force full width per item */
+    max-width: 100% !important;
+    scroll-snap-align: start;   /* for snapping if you want */
+  }
+  .prev-btn {
+  left: -20px;
+}
+
+.next-btn {
+  right: -20px;
+}
+.carousel-btn {
+  font-size: 4rem; /* bigger arrows */
+}
 }
