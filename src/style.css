@@ -337,7 +337,7 @@ span {
 
 /* Recent Projects Section */
 .projects {
-  background: #242424;
+  background: #2e2e2e;
   padding: 7rem 9% 5rem;
 }
 .carousel-wrapper {
@@ -359,7 +359,7 @@ span {
 
 .project-box {
   flex: 0 0 calc((100% / 3) - (2.5rem * 2 / 3)); /* adjust for bigger gap */
-  background: #2e2e2e;
+  background: #242424;
   padding: 3rem; /* increased padding */
   border-radius: 1rem;
   box-sizing: border-box;
