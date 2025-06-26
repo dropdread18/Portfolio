@@ -688,7 +688,7 @@ span {
   }
 
   .nav-list.show {
-    max-height: 500px;
+    max-height: 1000px;
     padding: 1rem;
   }
 
