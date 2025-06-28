@@ -376,6 +376,7 @@ span {
   color: #A259FF;
   margin-bottom: 0.8rem; /* more space below title */
   font-size: 2rem; /* bigger font */
+  font-family: monospace;
 }
 
 .project-box p {
