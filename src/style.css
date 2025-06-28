@@ -764,8 +764,9 @@ span {
     font-size: 1.5rem;
   }
   .services-box h3 {
-    font-size: 2.5rem;
-  }
+    font-size: 2rem;
+    font-family: monospace;
+}
   .contact form .input-box input, .contact form textarea {
     font-size: 1.5rem;
   }
