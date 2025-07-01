@@ -170,6 +170,8 @@ ul li {
 
 .header-content {
   margin-left: 5rem;
+  flex 1;
+  width: 100%;
 }
 
 .home-content h3 {
