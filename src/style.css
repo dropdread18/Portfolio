@@ -170,7 +170,7 @@ ul li {
 
 .header-content {
   margin-left: 5rem;
-  flex 1;
+  flex: 1;
   width: 100%;
 }
 
@@ -235,25 +235,33 @@ span {
   transform: translateY(-5px);
 }
 
+/*experience section code*/
+.experience-section {
+  width: 100%;
+  background: #f9f9f9; /* Optional background */
+  padding: 4rem 2rem;
+}
+
 .experience-stats {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin: 2rem 0;
+  gap: 2rem;
   text-align: center;
 }
 
 .stat-box h2 {
-  font-size: 2rem;
-  color: var(--main-color); /* Or use your theme color */
-  margin: 0;
+  font-size: 2.5rem;
+  color: var(--main-color);
+  margin-bottom: 0.5rem;
 }
 
 .stat-box p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #555;
-  margin: 0;
 }
+
 /* About Section Code */
 .about {
   display: flex;
