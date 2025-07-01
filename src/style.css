@@ -240,6 +240,7 @@ span {
 .experience-section {
   min-height: auto;
   padding-top: 0px;
+  margin-top: 0px;
 }
 
 .experience-stats {
