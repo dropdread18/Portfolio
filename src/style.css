@@ -142,6 +142,7 @@ ul li {
   justify-content: center;
   align-items: left;
   padding-bottom: 0px;
+  margin-bottom: -8rem;
 }
 
 .home-img img{
@@ -240,7 +241,6 @@ span {
 .experience-section {
   min-height: auto;
   padding-top: 0px;
-  margin-top: -5rem;
 }
 
 .experience-stats {
