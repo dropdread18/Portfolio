@@ -237,9 +237,8 @@ span {
 
 /*experience section code*/
 .experience-section {
-  width: 100%;
-  background: #f9f9f9; /* Optional background */
-  padding: 4rem 2rem;
+  min-height: auto;
+  padding: 4rem 2rem; /* or whatever you want */
 }
 
 .experience-stats {
