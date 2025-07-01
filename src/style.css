@@ -33,7 +33,17 @@ color: var(--text-color);
 
 section {
   min-height: 100vh;
+  padding: 10rem 9% 1rem;
+
+}
+section.fullscreen-section {
+  min-height: 100vh;
   padding: 10rem 9% 2rem;
+}
+
+section.condensed-section {
+  padding: 0 2rem 2rem;
+
 }
 
 /* Header Section Code */
