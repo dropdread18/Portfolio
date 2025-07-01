@@ -38,13 +38,15 @@ section {
 }
 section.fullscreen-section {
   min-height: 100vh;
-  padding: 10rem 9% 2rem; /* original layout for home section */
+  padding: 10rem 9% 0rem; /* 👈 remove bottom padding */
 }
 
+
 section.condensed-section {
-  padding: 2rem 2rem 2rem; /* top, sides, bottom */
-  margin-top: -1rem; /* safely reduce space between sections */
+  padding: 2rem 2rem 2rem; /* good top spacing */
+  margin-top: 0; /* no overlap */
 }
+
 
 /* Header Section Code */
 .header {
