@@ -38,12 +38,15 @@ section {
 }
 section.fullscreen-section {
   min-height: 100vh;
-  padding: 10rem 9% 2rem;
+  padding: 8rem 9% 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 section.condensed-section {
-  padding: 0 2rem 2rem;
-
+  padding: 2rem 2rem 2rem;
+  margin-top: -2rem;
 }
 
 /* Header Section Code */
