@@ -31,15 +31,10 @@ background: var(--bg-color);
 color: var(--text-color);
 }
 
-section.fullscreen-section {
+section {
   min-height: 100vh;
   padding: 10rem 9% 2rem;
 }
-
-section.condensed-section {
-  padding: 4rem 2rem;
-}
-
 
 /* Header Section Code */
 .header {
@@ -146,6 +141,7 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: left;
+  padding-bottom: 0px;
 }
 
 .home-img img{
@@ -256,9 +252,10 @@ span {
 }
 
 .stat-box h2 {
-  font-size: 2.5rem;
-  color: #A259FF;
+  font-size: 3rem;
+  color: var(--main-color);
   margin-bottom: 0.5rem;
+  font-family: monospace;
 }
 
 .stat-box p {
