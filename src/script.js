@@ -16,12 +16,21 @@ hamburgerMenu.addEventListener('click', () => {
 
 const readMoreBtn = document.getElementById('read-more-btn');
 const aboutText = document.getElementById('about-text');
+const skillsSection = document.getElementById('skills-section'); // 👈 Add this line
 
 readMoreBtn.addEventListener('click', (e) => {
   e.preventDefault();
   aboutText.classList.toggle('expanded');
-  readMoreBtn.textContent = aboutText.classList.contains('expanded') ? 'Read Less' : 'Read More';
+
+  const isExpanded = aboutText.classList.contains('expanded');
+  readMoreBtn.textContent = isExpanded ? 'Hide Skills' : 'View Skills';
+
+  // Show/hide skills section
+  if (skillsSection) {
+    skillsSection.style.display = isExpanded ? 'flex' : 'none';
+  }
 });
+
 
 /* carousel */
 document.addEventListener('DOMContentLoaded', () => {

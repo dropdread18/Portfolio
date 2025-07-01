@@ -44,7 +44,7 @@ section.fullscreen-section {
 
 section.condensed-section {
   padding: 2rem 2rem 2rem; /* good top spacing */
-  margin-top: 0; /* no overlap */
+  margin-top: -10rem; /* no overlap */
 }
 
 
@@ -260,6 +260,25 @@ span {
   gap: 2rem;
   text-align: center;
 }
+.stat-box {
+  position: relative;
+  padding: 2rem;
+}
+
+.stat-box::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 0;
+  height: 60%;
+  width: 1px;
+  background-color: #ddd;
+}
+
+.stat-box:first-child::before {
+  display: none;
+}
+
 
 .stat-box h2 {
   font-size: 3rem;
@@ -270,7 +289,7 @@ span {
 
 .stat-box p {
   font-size: 1.2rem;
-  color: #fff;
+  color: #A259FF;
   font-family: monospace;
 }
 
@@ -320,6 +339,7 @@ span {
 #about-text .more-text {
   display: none;
   color: #fff;
+  font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 #about-text.expanded .more-text {
@@ -329,6 +349,51 @@ span {
 #read-more-btn {
   display: inline-block;
   margin-top: 1rem;
+}
+
+/*skills section*/
+.skills-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.skill-name {
+  color: #fff; /* Keep text white */
+}
+
+
+.skill {
+  width: 100%;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.skill-header i {
+  font-size: 2rem;
+  color: #A259FF;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #444;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background-color: #A259FF;
+  border-radius: 6px;
+  transition: width 0.5s ease;
 }
 
 
@@ -693,6 +758,24 @@ span {
     width: 100%;
     max-width: 400px;
   }
+      .experience-stats {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 5rem;
+  }
+
+  .stat-box:not(:first-child) {
+    border-left: 1px solid #ddd;
+  }
+  section.condensed-section {
+    padding: 2rem 2rem 2rem;
+    margin-top: 0;
+}
+}
+/* Apply only on large screens */
+@media (min-width: 1400px) {
+  section.condensed-section {
+    margin-top: 0rem;
+  }
 }
 
 @media (max-width: 617px) {
@@ -750,8 +833,19 @@ span {
     display: block;
     margin-right: 0;
   }
-    .experience-stats {
+  .experience-stats {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 5rem;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .stat-box {
+    border-left: none !important;
+  }
+
+  .stat-box::before {
+    display: none;
   }
 }
 
