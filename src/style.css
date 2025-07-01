@@ -233,6 +233,25 @@ span {
   transform: translateY(-5px);
 }
 
+.experience-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.stat-box h2 {
+  font-size: 2rem;
+  color: var(--main-color); /* Or use your theme color */
+  margin: 0;
+}
+
+.stat-box p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
 /* About Section Code */
 .about {
   display: flex;
@@ -675,6 +694,7 @@ span {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  
   .nav-list {
     position: absolute;
     top: 100%;
@@ -707,6 +727,9 @@ span {
   ul li {
     display: block;
     margin-right: 0;
+  }
+    .experience-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
