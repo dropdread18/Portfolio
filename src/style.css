@@ -238,7 +238,7 @@ span {
 /*experience section code*/
 .experience-section {
   min-height: auto;
-  padding: 4rem 2rem; /* or whatever you want */
+  padding-top: 0px;
 }
 
 .experience-stats {
@@ -258,7 +258,8 @@ span {
 
 .stat-box p {
   font-size: 1.2rem;
-  color: #555;
+  color: #A259FF;
+  font-family: monospace;
 }
 
 /* About Section Code */
