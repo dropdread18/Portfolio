@@ -14,22 +14,29 @@ hamburgerMenu.addEventListener('click', () => {
   navList.classList.toggle('show');
 });
 
-const readMoreBtn = document.getElementById('read-more-btn');
-const aboutText = document.getElementById('about-text');
-const skillsSection = document.getElementById('skills-section'); // 👈 Add this line
+/*skills*/
+document.addEventListener('DOMContentLoaded', () => {
+  const devBtn = document.getElementById('toggle-development-btn');
+  const designBtn = document.getElementById('toggle-design-btn');
 
-readMoreBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  aboutText.classList.toggle('expanded');
+  const devSection = document.getElementById('development-skills');
+  const designSection = document.getElementById('design-skills');
 
-  const isExpanded = aboutText.classList.contains('expanded');
-  readMoreBtn.textContent = isExpanded ? 'Hide Skills' : 'View Skills';
+  devBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isVisible = devSection.style.display === 'block';
+    devSection.style.display = isVisible ? 'none' : 'block';
+    designSection.style.display = 'none';
+  });
 
-  // Show/hide skills section
-  if (skillsSection) {
-    skillsSection.style.display = isExpanded ? 'flex' : 'none';
-  }
+  designBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isVisible = designSection.style.display === 'block';
+    designSection.style.display = isVisible ? 'none' : 'block';
+    devSection.style.display = 'none';
+  });
 });
+
 
 
 /* carousel */
