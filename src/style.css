@@ -34,18 +34,18 @@ color: var(--text-color);
 section {
   min-height: 100vh;
   padding: 5rem 9% 5rem;
-
 }
+
 section.fullscreen-section {
   min-height: 100vh;
-  padding: 10rem 9% 0rem; /* 👈 remove bottom padding */
+  padding: 10rem 9% 10rem; /* <-- Match the negative margin below */
 }
-
 
 section.condensed-section {
-  padding: 2rem 2rem 2rem; /* good top spacing */
-  margin-top: -10rem; /* no overlap */
+  padding: 2rem;
+  margin-top: -10rem; /* <-- Works nicely with 10rem bottom padding above */
 }
+
 
 
 /* Header Section Code */
@@ -782,12 +782,6 @@ span {
     padding: 2rem 2rem 2rem;
     margin-top: 0;
 }
-}
-/* Apply only on large screens */
-@media (min-width: 1400px) {
-  section.condensed-section {
-    margin-top: 0rem;
-  }
 }
 
 @media (max-width: 617px) {
