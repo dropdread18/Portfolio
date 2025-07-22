@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henri's Pixel Adventure Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+            overflow-x: hidden;
+        }
+        
+        .pixel-border {
+            border: 4px solid #4a4a4a;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .pixel-border::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 4px solid #6a6a6a;
+            z-index: -1;
+        }
+        
+        .pixel-button {
+            transition: all 0.1s;
+        }
+        
+        .pixel-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .pixel-button:active {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .health-bar {
+            height: 20px;
+            background: linear-gradient(to right, #ff0000, #ff9900);
+            border: 2px solid #4a4a4a;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .health-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.1) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+        }
+        
+        .mana-bar {
+            height: 20px;
+            background: linear-gradient(to right, #0066ff, #00ccff);
+            border: 2px solid #4a4a4a;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mana-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.1) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+        }
+        
+        .exp-bar {
+            height: 20px;
+            background: linear-gradient(to right, #9900ff, #ff00cc);
+            border: 2px solid #4a4a4a;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .exp-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.1) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+        }
+        
+        .skill-node {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .skill-node:hover {
+            transform: scale(1.1);
+        }
+        
+        .skill-node::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            animation: spin 10s linear infinite;
+        }
+        
+        .skill-connector {
+            height: 4px;
+            background-color: #4a4a4a;
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .dungeon-card {
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dungeon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dungeon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            border-right: 3px solid #e6e6e6;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #e6e6e6; }
+        }
+        
+        .pixel-avatar {
+            image-rendering: pixelated;
+        }
+        
+        .pixel-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: #4a4a4a #1a1a2e;
+        }
+        
+        .pixel-scroll::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        .pixel-scroll::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        
+        .pixel-scroll::-webkit-scrollbar-thumb {
+            background-color: #4a4a4a;
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Game Title Screen -->
+    <div class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center transition-opacity duration-1000 opacity-0 pointer-events-none" id="title-screen">
+        <div class="pixel-border bg-indigo-900 p-8 mb-8 text-center">
+            <h1 class="text-4xl md:text-6xl text-yellow-300 mb-4">Henri's Developer Adventure</h1>
+            <p class="text-xl text-green-300 mb-8">A WordPress Developer's Journey</p>
+            <button class="pixel-border bg-red-600 text-white px-8 py-4 text-xl pixel-button" id="start-button">START GAME</button>
+        </div>
+    </div>
+
+    <!-- Game UI -->
+    <div class="container mx-auto px-2 md:px-4 py-4 md:py-8">
+        <!-- Character Header -->
+        <div class="pixel-border bg-gray-800 p-4 mb-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-32 h-32 md:w-48 md:h-48 mr-0 md:mr-8 mb-4 md:mb-0 relative">
+                    <img src="images/gggg.jpg" alt="Cyberpunk Owl Avatar" class="w-full h-full object-cover pixel-avatar floating">
+                    <div class="absolute -bottom-2 -right-2 pixel-border bg-purple-800 text-yellow-300 px-3 py-1 text-xs">
+                        Base Lvl: 31
+                    </div>
+                    <div class="absolute -bottom-10 -right-2 pixel-border bg-purple-800 text-yellow-300 px-3 py-1 text-xs">
+                        Job Lvl: 4
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h1 class="text-2xl md:text-4xl text-yellow-300 mb-2 typing-effect">Henri Jan Balbiran</h1>
+                    <p class="text-green-300 mb-4 text-sm md:text-base">Class: WordPress Developer / Virtual Assistant</p>
+                    
+                    <div class="mb-2">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span>HP: Coding Stamina</span>
+                            <span>100/100</span>
+                        </div>
+                        <div class="health-bar" style="width: 100%;"></div>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span>MP: Problem Solving</span>
+                            <span>85/100</span>
+                        </div>
+                        <div class="mana-bar" style="width: 85%;"></div>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span>EXP: Career Progress</span>
+                            <span>720/1000</span>
+                        </div>
+                        <div class="exp-bar" style="width: 72%;"></div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <div class="pixel-border bg-blue-700 text-white px-3 py-1 text-xs pixel-button">📍 Davao City</div>
+                        <div class="pixel-border bg-purple-700 text-white px-3 py-1 text-xs pixel-button">📞 0946-921-4444</div>
+                        <div class="pixel-border bg-green-700 text-white px-3 py-1 text-xs pixel-button">✉️ hjbalbiran@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Menu -->
+        <div class="flex flex-wrap gap-2 md:gap-4 mb-4 md:mb-8 justify-center">
+            <button class="pixel-border bg-red-600 text-white px-3 md:px-6 py-1 md:py-2 pixel-button active-tab text-xs md:text-base" data-tab="skills">SKILLS</button>
+            <button class="pixel-border bg-blue-600 text-white px-3 md:px-6 py-1 md:py-2 pixel-button text-xs md:text-base" data-tab="experience">EXPERIENCE</button>
+            <button class="pixel-border bg-green-600 text-white px-3 md:px-6 py-1 md:py-2 pixel-button text-xs md:text-base" data-tab="projects">PROJECTS</button>
+            <button class="pixel-border bg-purple-600 text-white px-3 md:px-6 py-1 md:py-2 pixel-button text-xs md:text-base" data-tab="contact">CONTACT</button>
+        </div>
+        
+        <!-- Skill Tree Section -->
+        <div id="skills" class="tab-content pixel-border bg-gray-800 p-6 mb-8">
+            <h2 class="text-xl md:text-2xl text-yellow-300 mb-6 text-center">DEVELOPER SKILL TREE</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+                <!-- Web Development Branch -->
+                <div class="pixel-border bg-gray-700 p-2 md:p-4">
+                    <h3 class="text-sm md:text-lg text-blue-300 mb-2 md:mb-4 text-center">Web Dev</h3>
+                    <div class="relative h-40 md:h-64">
+                        <!-- Skill Nodes -->
+                        <div class="skill-node bg-red-600 absolute top-0 left-1/2 transform -translate-x-1/2" data-skill="wordpress">
+                            <i class="fab fa-wordpress text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-orange-500 absolute top-20 left-1/4" data-skill="responsive">
+                            <i class="fas fa-mobile-alt text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-yellow-500 absolute top-20 right-1/4" data-skill="seo">
+                            <i class="fas fa-search text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-green-500 absolute top-40 left-1/4" data-skill="woocommerce">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-blue-500 absolute top-40 right-1/4" data-skill="htmlcss">
+                            <i class="fab fa-html5 text-2xl"></i>
+                        </div>
+                        
+                        <!-- Connectors -->
+                        <div class="skill-connector w-1/4 absolute top-16 left-1/2 transform -translate-x-1/2 rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-16 left-1/2 transform -translate-x-1/2 -rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-36 left-1/4 transform -translate-x-1/2 rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-36 right-1/4 transform translate-x-1/2 -rotate-45"></div>
+                    </div>
+                </div>
+                
+                <!-- Software & Tools Branch -->
+                <div class="pixel-border bg-gray-700 p-4">
+                    <h3 class="text-lg text-blue-300 mb-4 text-center">Software & Tools</h3>
+                    <div class="relative h-64">
+                        <!-- Skill Nodes -->
+                        <div class="skill-node bg-purple-600 absolute top-0 left-1/2 transform -translate-x-1/2" data-skill="elementor">
+                            <i class="fas fa-puzzle-piece text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-pink-500 absolute top-20 left-1/4" data-skill="acf">
+                            <i class="fas fa-cogs text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-indigo-500 absolute top-20 right-1/4" data-skill="security">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-teal-500 absolute top-40 left-1/4" data-skill="forms">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-cyan-500 absolute top-40 right-1/4" data-skill="ecommerce">
+                            <i class="fas fa-credit-card text-2xl"></i>
+                        </div>
+                        
+                        <!-- Connectors -->
+                        <div class="skill-connector w-1/4 absolute top-16 left-1/2 transform -translate-x-1/2 rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-16 left-1/2 transform -translate-x-1/2 -rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-36 left-1/4 transform -translate-x-1/2 rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-36 right-1/4 transform translate-x-1/2 -rotate-45"></div>
+                    </div>
+                </div>
+                
+                <!-- Technical Expertise Branch -->
+                <div class="pixel-border bg-gray-700 p-4">
+                    <h3 class="text-lg text-blue-300 mb-4 text-center">Technical Expertise</h3>
+                    <div class="relative h-64">
+                        <!-- Skill Nodes -->
+                        <div class="skill-node bg-green-600 absolute top-0 left-1/2 transform -translate-x-1/2" data-skill="performance">
+                            <i class="fas fa-tachometer-alt text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-blue-400 absolute top-20 left-1/4" data-skill="security-tech">
+                            <i class="fas fa-lock text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-yellow-400 absolute top-20 right-1/4" data-skill="dns">
+                            <i class="fas fa-globe text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-red-400 absolute top-40 left-1/4" data-skill="hosting">
+                            <i class="fas fa-server text-2xl"></i>
+                        </div>
+                        
+                        <div class="skill-node bg-purple-400 absolute top-40 right-1/4" data-skill="hardware">
+                            <i class="fas fa-desktop text-2xl"></i>
+                        </div>
+                        
+                        <!-- Connectors -->
+                        <div class="skill-connector w-1/4 absolute top-16 left-1/2 transform -translate-x-1/2 rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-16 left-1/2 transform -translate-x-1/2 -rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-36 left-1/4 transform -translate-x-1/2 rotate-45"></div>
+                        <div class="skill-connector w-1/4 absolute top-36 right-1/4 transform translate-x-1/2 -rotate-45"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Description -->
+            <div class="pixel-border bg-gray-700 p-4 mt-8 hidden" id="skill-description">
+                <h3 class="text-lg text-yellow-300 mb-2" id="skill-title">Skill Name</h3>
+                <p class="text-sm" id="skill-details">Hover over a skill to see details</p>
+            </div>
+        </div>
+        
+        <!-- Experience Section (Quest Log) -->
+        <div id="experience" class="tab-content pixel-border bg-gray-800 p-6 mb-8 hidden">
+            <h2 class="text-xl md:text-2xl text-yellow-300 mb-6 text-center">QUEST LOG (7+ YEAR JOURNEY)</h2>
+            
+            <div class="space-y-6">
+                <!-- Current Quest -->
+                <div class="pixel-border bg-indigo-900 p-4">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                            <h3 class="text-lg text-green-300">WP Tangerine</h3>
+                            <p class="text-sm text-blue-300">March 2022 – Present</p>
+                            <p class="text-xs text-yellow-300">(Active Quest)</p>
+                        </div>
+                        <div class="w-full md:w-3/4">
+                            <h4 class="text-md text-white mb-2">WordPress Developer (Remote)</h4>
+                            <ul class="text-sm list-disc list-inside space-y-1">
+                                <li>Develop advanced front-end and back-end WordPress solutions tailored to client needs</li>
+                                <li>Build custom, mobile-responsive themes and templates aligned with brand identity</li>
+                                <li>Collaborate with clients to define sitemaps, features, and functionality</li>
+                                <li>Convert Adobe XD and Figma designs into fully functional WordPress websites</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Previous Quests -->
+                <div class="pixel-border bg-gray-700 p-4">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                            <h3 class="text-lg text-green-300">RC Digital Consultancy</h3>
+                            <p class="text-sm text-blue-300">September 2021 – January 2022</p>
+                        </div>
+                        <div class="w-full md:w-3/4">
+                            <h4 class="text-md text-white mb-2">WordPress Developer (Remote)</h4>
+                            <ul class="text-sm list-disc list-inside space-y-1">
+                                <li>Designed and implemented custom WordPress websites with mobile optimization</li>
+                                <li>Worked closely with clients to define website architecture and functional requirements</li>
+                                <li>Delivered user-friendly, brand-consistent designs with a focus on usability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pixel-border bg-gray-700 p-4">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                            <h3 class="text-lg text-green-300">PSSCC</h3>
+                            <p class="text-sm text-blue-300">March 2016 – August 2020</p>
+                        </div>
+                        <div class="w-full md:w-3/4">
+                            <h4 class="text-md text-white mb-2">Hardware & Software Support / IT</h4>
+                            <ul class="text-sm list-disc list-inside space-y-1">
+                                <li>Led a team responsible for maintaining IT infrastructure and supporting operations</li>
+                                <li>Performed preventive maintenance and troubleshooting for software and hardware</li>
+                                <li>Managed inventory and coordinated with contractors for system maintenance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pixel-border bg-gray-700 p-4">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                            <h3 class="text-lg text-green-300">CENRO</h3>
+                            <p class="text-sm text-blue-300">August 2015 – March 2016</p>
+                        </div>
+                        <div class="w-full md:w-3/4">
+                            <h4 class="text-md text-white mb-2">Data Encoder</h4>
+                            <ul class="text-sm list-disc list-inside space-y-1">
+                                <li>Maintained accurate and secure databases in compliance with privacy policies</li>
+                                <li>Supported logistics through inventory tracking of automotive parts and supplies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education -->
+                <div class="pixel-border bg-purple-900 p-4">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                            <h3 class="text-lg text-green-300">University of Mindanao</h3>
+                            <p class="text-sm text-blue-300">June 2010 – October 2015</p>
+                        </div>
+                        <div class="w-full md:w-3/4">
+                            <h4 class="text-md text-white mb-2">Bachelor of Science in Information Technology</h4>
+                            <p class="text-sm">Completed the training quest to become a professional developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Section -->
+        <div id="projects" class="tab-content pixel-border bg-gray-800 p-6 mb-8 hidden">
+            <h2 class="text-xl md:text-2xl text-yellow-300 mb-6 text-center">Recent <span class="text-green-300">Projects</span></h2>
+            
+                <div class="projects-carousel flex overflow-x-auto gap-4 md:gap-6 px-2 md:px-4 py-2 md:py-4 snap-x snap-mandatory">
+                    <div class="project-box pixel-border bg-gray-700 p-2 md:p-4 flex-shrink-0 w-48 md:w-64 snap-center">
+                        <img src="images/Web-Design-Agency-in-Denver-Fort-Collins-Thrive-Engine-06-25-2025_11_51_AM.png" alt="Project 1" class="w-full h-40 object-cover mb-4"/>
+                        <h3 class="text-lg text-yellow-300 mb-2">Thrive Engine</h3>
+                        <p class="text-sm mb-4">Denver WordPress Website Design + Website Development Maintenance + Updates</p>
+                        <a href="https://thriveengine.com/" target="_blank" class="pixel-button pixel-border bg-blue-600 text-white px-4 py-2 text-sm block text-center">View Website</a>
+                    </div>
+                    <div class="project-box pixel-border bg-gray-700 p-4 flex-shrink-0 w-64">
+                        <img src="images/Home-School-Gig-06-25-2025_11_59_AM.png" alt="Project 2" class="w-full h-40 object-cover mb-4"/>
+                        <h3 class="text-lg text-yellow-300 mb-2">School Gig</h3>
+                        <p class="text-sm mb-4">A smart, cost-effective hiring solution that helps schools easily connect with top teaching talent.</p>
+                        <a href="https://schoolgig.com/" target="_blank" class="pixel-button pixel-border bg-blue-600 text-white px-4 py-2 text-sm block text-center">View Website</a>
+                    </div>
+                    <div class="project-box pixel-border bg-gray-700 p-4 flex-shrink-0 w-64">
+                        <img src="images/Pool-Leak-Detection-Repair-Service-Florida-Leak-Locators-06-25-2025_12_02_PM.png" alt="Project 3" class="w-full h-40 object-cover mb-4"/>
+                        <h3 class="text-lg text-yellow-300 mb-2">Florida Leak Locators</h3>
+                        <p class="text-sm mb-4">Pool & Spa Leak Detection And Repair Experts In South Florida</p>
+                        <a href="https://floridaleak.com/" target="_blank" class="pixel-button pixel-border bg-blue-600 text-white px-4 py-2 text-sm block text-center">View Website</a>
+                    </div>
+                    <div class="project-box pixel-border bg-gray-700 p-4 flex-shrink-0 w-64">
+                        <img src="images/Vibe-By-California.png" alt="Project 4" class="w-full h-40 object-cover mb-4"/>
+                        <h3 class="text-lg text-yellow-300 mb-2">Vibe by California</h3>
+                        <p class="text-sm mb-4">Vibe By California Sacramento formerly Alpine Alternative is a licensed Recreational & Medical Cannabis Dispensary.</p>
+                        <a href="https://www.vibebycalifornia.com/" target="_blank" class="pixel-button pixel-border bg-blue-600 text-white px-4 py-2 text-sm block text-center">View Website</a>
+                    </div>
+                    <div class="project-box pixel-border bg-gray-700 p-4 flex-shrink-0 w-64">
+                        <img src="images/Being_and_doing.png" alt="Project 5" class="w-full h-40 object-cover mb-4"/>
+                        <h3 class="text-lg text-yellow-300 mb-2">Being and Doing</h3>
+                        <p class="text-sm mb-4">Awaken into the creative field of possibility that makes humans so amazing.</p>
+                        <a href="https://beinganddoing.online/nuggets/" target="_blank" class="pixel-button pixel-border bg-blue-600 text-white px-4 py-2 text-sm block text-center">View Website</a>
+                    </div>
+                    <div class="project-box pixel-border bg-gray-700 p-4 flex-shrink-0 w-64">
+                        <img src="images/Go-With-Elmo.png" alt="Project 6" class="w-full h-40 object-cover mb-4"/>
+                        <h3 class="text-lg text-yellow-300 mb-2">Go With Elmo</h3>
+                        <p class="text-sm mb-4">A weekly podcast where Elmo Lovano interviews creatives and entrepreneurs in music and goes deep on HOW they push forward every day.</p>
+                        <a href="https://gowithelmo.com/" target="_blank" class="pixel-button pixel-border bg-blue-600 text-white px-4 py-2 text-sm block text-center">View Website</a>
+                    </div>
+                </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div id="contact" class="tab-content pixel-border bg-gray-800 p-6 mb-8 hidden">
+            <h2 class="text-xl md:text-2xl text-yellow-300 mb-6 text-center">SEND MESSAGE (CONTACT ME)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg text-green-300 mb-4">Available for new quests!</h3>
+                    <p class="text-sm mb-4">I'm open to remote and freelance work opportunities. Whether you need a WordPress developer, virtual assistant, or IT support, I'm ready to tackle your challenges.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-red-400 mr-3"></i>
+                            <span class="text-sm">Brgy 1-A, Purok 6, Magallanes Riverside, Davao City</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-sm">0946-921-4444</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-yellow-400 mr-3"></i>
+                            <span class="text-sm">hjbalbiran@gmail.com</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="text-md text-green-300 mb-2">Additional Stats:</h4>
+                        <ul class="text-sm list-disc list-inside space-y-1">
+                            <li>Strong collaboration and communication skills</li>
+                            <li>Experienced in managing client expectations</li>
+                            <li>Committed to delivering high-quality results</li>
+                            <li>Always learning new skills and technologies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-green-300 mb-1">Your Name</label>
+                            <input type="text" class="w-full pixel-border bg-gray-700 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-green-300 mb-1">Your Email</label>
+                            <input type="email" class="w-full pixel-border bg-gray-700 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-green-300 mb-1">Quest Type</label>
+                            <select class="w-full pixel-border bg-gray-700 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>WordPress Development</option>
+                                <option>Virtual Assistance</option>
+                                <option>IT Support</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-green-300 mb-1">Message</label>
+                            <textarea rows="4" class="w-full pixel-border bg-gray-700 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="pixel-border bg-green-600 text-white px-6 py-2 pixel-button">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="pixel-border bg-gray-900 text-center p-4 mt-8">
+        <p class="text-sm">© 2023 Henri Jan Balbiran - All rights reserved</p>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-blue-300 hover:text-blue-200"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-pink-400 hover:text-pink-300"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Game title screen
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleScreen = document.getElementById('title-screen');
+            const startButton = document.getElementById('start-button');
+            
+            // Show title screen
+            setTimeout(() => {
+                titleScreen.classList.remove('opacity-0');
+                titleScreen.classList.remove('pointer-events-none');
+            }, 500);
+            
+            // Start game
+            startButton.addEventListener('click', function() {
+                titleScreen.classList.add('opacity-0');
+                titleScreen.classList.add('pointer-events-none');
+                
+                // Play sound effect if available
+                try {
+                    const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3');
+                    audio.volume = 0.3;
+                    audio.play();
+                } catch (e) {
+                    console.log('Audio error:', e);
+                }
+            });
+            
+            // Tab switching
+            const tabs = document.querySelectorAll('[data-tab]');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Play sound effect
+                    try {
+                        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+                        audio.volume = 0.2;
+                        audio.play();
+                    } catch (e) {
+                        console.log('Audio error:', e);
+                    }
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active-tab'));
+                    this.classList.add('active-tab');
+                    
+                    // Show selected content
+                    const tabId = this.getAttribute('data-tab');
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                        if (content.id === tabId) {
+                            content.classList.remove('hidden');
+                        }
+                    });
+                });
+            });
+            
+            // Skill tree interactions
+            const skillNodes = document.querySelectorAll('.skill-node');
+            const skillDescription = document.getElementById('skill-description');
+            const skillTitle = document.getElementById('skill-title');
+            const skillDetails = document.getElementById('skill-details');
+            
+            const skillData = {
+                'wordpress': {
+                    title: 'WordPress Mastery (4+ yrs)',
+                    details: 'Expert in WordPress Theme and Plugin Customization with 7+ years experience. Can build custom solutions from scratch or modify existing ones.'
+                },
+                'responsive': {
+                    title: 'Mobile Responsiveness',
+                    details: 'Specializes in creating websites that look great on all devices. Uses modern CSS techniques and frameworks.'
+                },
+                'seo': {
+                    title: 'SEO Optimization',
+                    details: 'Implements on-page SEO strategies using tools like Yoast SEO and Rank Math. Optimizes content for search engines.'
+                },
+                'woocommerce': {
+                    title: 'E-Commerce',
+                    details: 'Sets up and customizes WooCommerce stores. Integrates payment gateways like Stripe and PayPal.'
+                },
+                'htmlcss': {
+                    title: 'HTML/CSS/JS',
+                    details: 'Strong foundation in front-end technologies. Creates custom layouts and interactive elements.'
+                },
+                'elementor': {
+                    title: 'Page Builders',
+                    details: 'Proficient with Elementor, WPBakery, Beaver Builder, and Divi. Can create complex layouts without coding.'
+                },
+                'acf': {
+                    title: 'Advanced Custom Fields',
+                    details: 'Creates custom content structures and interfaces for clients using ACF.'
+                },
+                'security': {
+                    title: 'WordPress Security',
+                    details: 'Implements security measures using Wordfence and iThemes Security. Performs malware removal.'
+                },
+                'forms': {
+                    title: 'Form Builders',
+                    details: 'Creates complex forms using Contact Form 7, Gravity Forms, and WPForms.'
+                },
+                'ecommerce': {
+                    title: 'E-Commerce Tools',
+                    details: 'Sets up payment gateways and shopping cart functionality.'
+                },
+                'performance': {
+                    title: 'Performance Optimization',
+                    details: 'Optimizes websites for speed using caching, image compression, and code minification.'
+                },
+                'security-tech': {
+                    title: 'Technical Security',
+                    details: 'Implements firewalls, performs malware removal, and manages backups.'
+                },
+                'dns': {
+                    title: 'DNS Management',
+                    details: 'Configures nameservers, MX records, and manages DNS propagation.'
+                },
+                'hosting': {
+                    title: 'Hosting Management',
+                    details: 'Works with cPanel, WHM, File Manager, and FTP/SFTP.'
+                },
+                'hardware': {
+                    title: 'Hardware Support',
+                    details: 'Troubleshoots and assembles computer hardware. Installs and configures software.'
+                }
+            };
+            
+            skillNodes.forEach(node => {
+                node.addEventListener('mouseenter', function() {
+                    const skill = this.getAttribute('data-skill');
+                    skillTitle.textContent = skillData[skill].title;
+                    skillDetails.textContent = skillData[skill].details;
+                    skillDescription.classList.remove('hidden');
+                    
+                    // Play sound effect
+                    try {
+                        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3');
+                        audio.volume = 0.2;
+                        audio.play();
+                    } catch (e) {
+                        console.log('Audio error:', e);
+                    }
+                });
+                
+                node.addEventListener('click', function() {
+                    // Play sound effect
+                    try {
+                        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3');
+                        audio.volume = 0.3;
+                        audio.play();
+                    } catch (e) {
+                        console.log('Audio error:', e);
+                    }
+                });
+            });
+            
+            // Carousel functionality
+            const carousel = document.querySelector('.projects-carousel');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const projectBoxes = document.querySelectorAll('.project-box');
+            
+            let currentIndex = 0;
+            const itemWidth = 288; // 64 (w-64) + 16 (p-4) * 2
+            
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < projectBoxes.length - 3) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Animate health bars
+            setInterval(() => {
+                const healthBar = document.querySelector('.health-bar');
+                const manaBar = document.querySelector('.mana-bar');
+                const expBar = document.querySelector('.exp-bar');
+                
+                healthBar.style.width = `${Math.floor(Math.random() * 5) + 95}%`;
+                manaBar.style.width = `${Math.floor(Math.random() * 10) + 80}%`;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
