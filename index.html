@@ -48,6 +48,7 @@
   <div class="nav-name">Henri Jan Balbiran</div>
   <nav class="nav-links">
     <a href="#work">Work</a>
+    <a href="#ai-systems">AI</a>
     <a href="#expertise">Expertise</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
@@ -111,10 +112,73 @@
     <div class="section-title">
       <h2>SELECTED WORK</h2>
     </div>
-    <p class="section-desc">A selection of WordPress projects focused on performance, usability, responsive design and client requirements.</p>
+    <p class="section-desc">A selection of WordPress and AI projects focused on performance, usability, responsive design and client requirements.</p>
   </div>
 
   <div id="work-scroll" class="work-scroll" tabindex="0" role="region" aria-label="Selected work, scroll horizontally for more projects">
+
+    <!-- Featured: AI Employee Command Center -->
+    <article class="project-card">
+      <div class="project-mock">
+        <div class="browser-chrome">
+          <div class="chrome-bar">
+            <span class="light red"></span><span class="light yellow"></span><span class="light green"></span>
+            <span class="chrome-url">localhost · ai-command-center</span>
+          </div>
+          <div class="chrome-content">
+            <img src="assets/project-command-center.png" alt="AI Employee Command Center dashboard: situation report, command console with routing preview, and workload instruments" />
+          </div>
+        </div>
+        <div class="ios-frame">
+          <div class="ios-island"></div>
+          <div class="ios-content">
+            <img src="assets/project-command-center-mobile.png" alt="AI Employee Command Center dashboard — mobile view" />
+          </div>
+          <div class="ios-home-indicator"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3>AI Employee Command Center</h3>
+        <div class="project-meta">
+          <div><span class="meta-label">ROLE</span><br>Architect &amp; Developer</div>
+          <div><span class="meta-label">PLATFORM</span><br>Claude Code + Local Web App</div>
+          <div class="span-2"><span class="meta-label">TECHNOLOGIES</span><br>Claude Code, React, TypeScript, Tailwind CSS, Three.js, Obsidian</div>
+        </div>
+        <p class="project-desc">Built a local-first AI workforce: ten Claude Code agents (orchestrator, planner, WordPress, full-stack, design, career, research, security, video and finance) where the orchestrator triages each request, routes it to the right specialist and runs QA before anything reaches me. A sci-fi command dashboard shows the agents, engineering loops, QA queue and security reviews, plus a live 3D map of my Obsidian knowledge vault. Designed and built with AI pair-programming; runs on a Claude subscription with $0 API cost.</p>
+        <div class="tech-detail">
+          <div class="tech-detail-label">TECH STACK — DETAILED</div>
+          <div class="tech-detail-grid">
+            <div>
+              <div class="tech-cat">AGENT ORCHESTRATION</div>
+              <div class="tech-item">10 Claude Code subagents</div>
+              <div class="tech-item">15 on-demand skills</div>
+              <div class="tech-item">QA gates, loop budgets and owner approval enforced in code</div>
+            </div>
+            <div>
+              <div class="tech-cat">DASHBOARD</div>
+              <div class="tech-item">React 19 + TypeScript + Vite</div>
+              <div class="tech-item">Tailwind CSS v4 HUD design system</div>
+              <div class="tech-item">3D knowledge graph (Three.js)</div>
+            </div>
+            <div>
+              <div class="tech-cat">MEMORY &amp; TOKENS</div>
+              <div class="tech-item">Obsidian vault as long-term memory</div>
+              <div class="tech-item">Progressive context loading</div>
+              <div class="tech-item">Budgeted, cache-first research agent</div>
+            </div>
+            <div>
+              <div class="tech-cat">SECURITY &amp; QUALITY</div>
+              <div class="tech-item">Local-only API with CSRF/origin checks</div>
+              <div class="tech-item">Encrypted OAuth tokens (read-only Basecamp sync)</div>
+              <div class="tech-item">42 automated tests</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-link-row">
+          <span class="project-link-inprogress">PRIVATE SYSTEM — DEMO ON REQUEST</span>
+        </div>
+      </div>
+    </article>
 
     <!-- Project 1: IWI Consulting -->
     <article class="project-card">
@@ -437,6 +501,81 @@
 
   </div>
   <div class="scroll-hint">← SCROLL →</div>
+</section>
+
+<!-- AI CASE STUDY: COMMAND CENTER -->
+<section id="ai-systems" class="case">
+  <div class="section-head-row">
+    <div class="section-title">
+      <h2>AI COMMAND CENTER</h2>
+    </div>
+    <p class="section-desc">A case study in agent orchestration: one request in, the right specialist on it, QA before anything ships.</p>
+  </div>
+
+  <div class="case-inner">
+    <div class="case-cols">
+      <div class="case-col">
+        <div class="eyebrow">WHAT IT DOES</div>
+        <ul class="case-list">
+          <li><strong>Takes a request in plain English.</strong> An orchestrator agent triages it, sets a QA level and acceptance criteria, and routes it to the one specialist it needs.</li>
+          <li><strong>Runs a team of ten AI specialists.</strong> WordPress, full-stack, design, project management, career/ATS, research, security, video and finance agents, each with its own rules and tools.</li>
+          <li><strong>Gates every output.</strong> Nothing reaches me without a QA pass. High-risk work also needs a security review, loop budgets stop runaway retries, and live sites need my explicit approval.</li>
+          <li><strong>Remembers across sessions.</strong> An Obsidian knowledge vault serves as long-term memory, so any session can resume a task from its card.</li>
+        </ul>
+      </div>
+      <div class="case-col">
+        <div class="eyebrow">WHAT WE BUILT</div>
+        <ul class="case-list">
+          <li><strong>The agent system:</strong> 10 Claude Code subagents and 15 skills, with governance rules enforced in code rather than left to prompts.</li>
+          <li><strong>A shared state CLI</strong> that agents and the dashboard both use for tasks, QA results, security findings and the activity log.</li>
+          <li><strong>A React + TypeScript dashboard</strong> with two themes: a sci-fi command HUD and a pixel-art town where each agent walks to the tasks it is working on.</li>
+          <li><strong>A live 3D map</strong> of the knowledge vault (Three.js) showing notes, links and open work.</li>
+          <li><strong>Local-first and $0 API cost:</strong> it runs on a Claude subscription, with a localhost-only API protected by origin/CSRF checks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-gallery">
+      <figure class="case-shot case-shot-wide">
+        <img src="assets/cc-town.jpg" alt="Westeros Pixel Town theme: the dashboard overview rendered as a pixel-art town where each AI agent is a character and task status appears above buildings" loading="lazy" width="1600" height="850">
+        <figcaption><span>01</span> Pixel-town overview: live task state drives the characters, buildings and status icons.</figcaption>
+      </figure>
+      <figure class="case-shot">
+        <img src="assets/cc-agents.jpg" alt="Agents page listing the AI specialists with their role, model, active tasks and QA pass rate" loading="lazy" width="1600" height="1000">
+        <figcaption><span>02</span> The agent roster: each specialist's role, model, workload and QA pass rate.</figcaption>
+      </figure>
+      <figure class="case-shot">
+        <img src="assets/cc-graph.jpg" alt="Knowledge Brain: a glowing 3D graph of 138 notes and 477 links from the Obsidian vault" loading="lazy" width="1600" height="1000">
+        <figcaption><span>03</span> Knowledge Brain: a 3D map of the vault the agents use as memory.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- AI CONTENT CREATION -->
+<section id="content" class="content-reel">
+  <div class="content-inner">
+    <div class="content-copy">
+      <div class="eyebrow">AI CONTENT CREATION</div>
+      <h2 class="content-title">Short-form explainers, made with AI.</h2>
+      <p>Vertical animated explainers on personal finance for social media, across two visual series: a chibi-mascot lesson format for <em>The Wealth Shift</em> and an illustrated “Poor vs Rich” story format. I combine AI-generated characters and art with scripted, timed motion edits.</p>
+      <div class="content-stats">
+        <div><span class="meta-label">FORMAT</span><br>9:16 vertical shorts</div>
+        <div><span class="meta-label">LENGTH</span><br>60–100 s each</div>
+        <div><span class="meta-label">SHOWN HERE</span><br>7 videos, sped up 3.3× into one minute</div>
+      </div>
+      <p class="content-note">Silent highlight reel. Full-length videos available on request.</p>
+    </div>
+    <div class="content-phone">
+      <div class="ios-frame content-frame">
+        <div class="ios-island"></div>
+        <div class="ios-content">
+          <video src="assets/content-reel.mp4" poster="assets/content-reel-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="One-minute sped-up highlight reel of seven AI-assisted finance explainer videos"></video>
+        </div>
+        <div class="ios-home-indicator"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- WHAT I BUILD -->
